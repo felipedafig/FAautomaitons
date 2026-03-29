@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude config:*)",
+      "Bash(npm run:*)",
+      "Bash(tasklist /FI \"IMAGENAME eq node.exe\")",
+      "Bash(wmic process:*)",
+      "Bash(powershell -Command \"Get-Process -Name node -ErrorAction SilentlyContinue | Select-Object Id, Path | Format-Table -AutoSize\")",
+      "Bash(powershell -Command \"Stop-Process -Id 4356 -Force -ErrorAction SilentlyContinue\")",
+      "Bash(powershell -Command \"Get-Process -Id 4356 -ErrorAction SilentlyContinue | Select-Object Id\")"
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  }
+}

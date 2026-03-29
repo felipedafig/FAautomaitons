@@ -26,18 +26,19 @@ function Hero() {
   return (
     <div className="w-full">
       <div className="container mx-auto mt-10 px-4">
-        <div className="flex gap-8 py-20 lg:py-32 items-start justify-start flex-col">
-        
-          <div className="flex gap-4 flex-col items-start text-left">
-            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-left font-regular leading-[1.1]">
-              <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent"> Automations Workflows that Help Hotels to</span>
-              <span className="relative flex w-full justify-start overflow-hidden text-left md:pb-4 md:pt-1">
-                &nbsp;
+        <div className="flex gap-6 py-16 lg:py-24 items-start justify-start flex-col">
+          <div className="flex gap-5 flex-col items-start text-left">
+            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-left font-regular leading-[1.15]">
+              <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">Automation Workflows that Help </span>
+              <span className="relative inline-block bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent font-semibold">
+                Hotels
+              </span>
+              <span className="relative flex w-full justify-start overflow-hidden text-left h-[1.3em] mt-1">
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
-                    className="absolute font-semibold"
-                    initial={{ opacity: 0, y: "-100" }}
+                    className="absolute font-semibold whitespace-nowrap"
+                    initial={{ opacity: 0, y: -150 }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
                       titleNumber === index
@@ -46,7 +47,7 @@ function Hero() {
                             opacity: 1,
                           }
                         : {
-                            y: titleNumber > index ? -150 : 150,
+                            y: 150,
                             opacity: 0,
                           }
                     }
@@ -58,7 +59,7 @@ function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left">
-              Stop wasting hours on repetitive tasks. We build the digital infrastructure that powers your hotel’s guest journey and housekeeping logistics. From the first booking to the final check-out, we ensure your operations run flawlessly, and automatically.
+              We automate your property’s repetitive operations, from initial booking through to post-stay management.
             </p>
           </div>
           <div className="flex flex-row gap-3">

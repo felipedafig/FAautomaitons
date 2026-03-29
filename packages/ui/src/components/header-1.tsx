@@ -8,21 +8,12 @@ import { createPortal } from 'react-dom';
 
 export function Header() {
 	const [open, setOpen] = React.useState(false);
-	const scrolled = useScroll(10);
+	const scrolled = useScroll(20);
 
 	const links = [
-		{
-			label: 'Features',
-			href: '#',
-		},
-		{
-			label: 'Pricing',
-			href: '#',
-		},
-		{
-			label: 'About',
-			href: '#',
-		},
+		{ label: 'Features', href: '#' },
+		{ label: 'Pricing', href: '#' },
+		{ label: 'About', href: '#' },
 	];
 
 	React.useEffect(() => {
@@ -38,27 +29,51 @@ export function Header() {
 
 	return (
 		<header
-			className={cn('sticky top-0 z-50 w-full border-b border-transparent', {
-				'bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg':
-					scrolled,
-			})}
+			className={cn(
+				'fixed top-0 inset-x-0 z-50 transition-all duration-300',
+				scrolled
+					? 'bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm'
+					: 'bg-transparent',
+			)}
 		>
-			<nav className="mx-auto flex h-20 w-full max-w-5xl items-center justify-between px-4">
-				<div className="hover:bg-accent rounded-md p-2">
-					<div className="text-2xl font-bold text-foreground">FA Automations</div>
-				</div>
-				<div className="hidden items-center gap-4 md:flex">
+			<div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 md:px-10 lg:px-16">
+				{/* Logo */}
+				<a href="#" className="group flex items-center gap-2.5">
+					<span className="text-xl font-bold tracking-tight text-foreground transition-opacity group-hover:opacity-80">
+						FA Automations
+					</span>
+				</a>
+
+				{/* Desktop nav links — centered */}
+				<nav className="hidden items-center gap-8 md:flex">
 					{links.map((link) => (
-						<a key={link.label} className={buttonVariants({ variant: 'ghost', size: 'lg' })} href={link.href}>
+						<a
+							key={link.label}
+							href={link.href}
+							className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+						>
 							{link.label}
 						</a>
 					))}
-					<Button variant="outline" size="lg">Sign In</Button>
-					<Button size="lg">Get Started</Button>
+				</nav>
+
+				{/* Desktop CTAs */}
+				<div className="hidden items-center gap-3 md:flex">
+					<a
+						href="#"
+						className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+					>
+						Sign In
+					</a>
+					<Button size="sm" className="rounded-lg px-5 font-semibold">
+						Get Started
+					</Button>
 				</div>
+
+				{/* Mobile hamburger */}
 				<Button
 					size="icon"
-					variant="outline"
+					variant="ghost"
 					onClick={() => setOpen(!open)}
 					className="md:hidden"
 					aria-expanded={open}
@@ -67,16 +82,17 @@ export function Header() {
 				>
 					<MenuToggleIcon open={open} className="size-5" duration={300} />
 				</Button>
-			</nav>
+			</div>
+
 			<MobileMenu open={open} className="flex flex-col justify-between gap-2">
-				<div className="grid gap-y-2">
+				<div className="grid gap-y-1">
 					{links.map((link) => (
 						<a
 							key={link.label}
 							className={buttonVariants({
 								variant: 'ghost',
 								size: 'lg',
-								className: 'justify-start',
+								className: 'justify-start text-base font-medium',
 							})}
 							href={link.href}
 						>
@@ -85,10 +101,12 @@ export function Header() {
 					))}
 				</div>
 				<div className="flex flex-col gap-2">
-					<Button variant="outline" className="w-full bg-transparent" size="lg">
+					<Button variant="outline" className="w-full" size="lg">
 						Sign In
 					</Button>
-					<Button className="w-full" size="lg">Get Started</Button>
+					<Button className="w-full" size="lg">
+						Get Started
+					</Button>
 				</div>
 			</MobileMenu>
 		</header>
@@ -106,15 +124,15 @@ function MobileMenu({ open, children, className, ...props }: MobileMenuProps) {
 		<div
 			id="mobile-menu"
 			className={cn(
-				'bg-background/95 supports-[backdrop-filter]:bg-background/50 backdrop-blur-lg',
-				'fixed top-20 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-y md:hidden',
+				'bg-background/95 backdrop-blur-xl',
+				'fixed top-[4.5rem] right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-t border-border/40 md:hidden',
 			)}
 		>
 			<div
 				data-slot={open ? 'open' : 'closed'}
 				className={cn(
 					'data-[slot=open]:animate-in data-[slot=open]:zoom-in-97 ease-out',
-					'size-full p-4',
+					'size-full p-6',
 					className,
 				)}
 				{...props}
