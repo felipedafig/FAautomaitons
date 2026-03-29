@@ -7,7 +7,14 @@
       "Bash(wmic process:*)",
       "Bash(powershell -Command \"Get-Process -Name node -ErrorAction SilentlyContinue | Select-Object Id, Path | Format-Table -AutoSize\")",
       "Bash(powershell -Command \"Stop-Process -Id 4356 -Force -ErrorAction SilentlyContinue\")",
-      "Bash(powershell -Command \"Get-Process -Id 4356 -ErrorAction SilentlyContinue | Select-Object Id\")"
+      "Bash(powershell -Command \"Get-Process -Id 4356 -ErrorAction SilentlyContinue | Select-Object Id\")",
+      "Bash(xargs grep:*)",
+      "Bash(cat C:/dev/Personal/FAautomaitons/apps/web/.env*)",
+      "Bash(npm view:*)",
+      "Bash(npm install:*)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(taskkill:*)",
+      "Bash(curl -s http://localhost:3001)"
     ]
   },
   "enabledPlugins": {

@@ -3,10 +3,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MoveRight, PhoneCall } from "lucide-react";
+import { PopupModal } from "react-calendly";
 import { Button } from "@workspace/ui/components/button";
 
-function Hero() {
+function Hero({ calendlyUrl }: { calendlyUrl?: string }) {
   const [titleNumber, setTitleNumber] = useState(0);
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const titles = useMemo(
     () => ["Eliminate Manual Tasks", "Run Smoother", "Personalize the Stay", "Be More Efficient", "Save Hours", ],
     []
@@ -63,9 +65,23 @@ function Hero() {
             </p>
           </div>
           <div className="flex flex-row gap-3">
-            <Button size="lg" className="gap-2.5" variant="outline">
-              <PhoneCall className="w-1 h-1"/>Jump on a call
+            <Button
+              size="lg"
+              className="gap-2.5"
+              variant="outline"
+              onClick={() => calendlyUrl && setIsCalendlyOpen(true)}
+            >
+              <PhoneCall className="w-4 h-4" />
+              Jump on a call
             </Button>
+            {calendlyUrl && isCalendlyOpen && (
+              <PopupModal
+                url={calendlyUrl}
+                onModalClose={() => setIsCalendlyOpen(false)}
+                open={isCalendlyOpen}
+                rootElement={document.body}
+              />
+            )}
             
           </div>
         </div>

@@ -1,76 +1,75 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Zap, Shield } from "lucide-react";
-import { Card } from "@workspace/ui/components/card";
+import { MessageCircle, BotMessageSquare, CalendarCheck, BellRing } from "lucide-react";
 
 const features = [
   {
-    icon: Sparkles,
-    title: "Automated Guest Communication",
+    icon: MessageCircle,
+    title: "Guest Communication",
     description:
-      "Pre-arrival welcomes, check-in instructions, and review requests — all sent automatically via WhatsApp or Email.",
+      "Automated welcomes, check-in instructions, and review requests via WhatsApp or Email.",
   },
   {
-    icon: Zap,
-    title: "24/7 AI Virtual Receptionist",
+    icon: BotMessageSquare,
+    title: "AI Virtual Receptionist",
     description:
-      "A custom AI agent that handles guest inquiries, provides local info, and resolves issues in real-time.",
+      "24/7 AI agent handling inquiries, local tips, and real-time issue resolution.",
   },
   {
-    icon: Shield,
-    title: "Integrated Housekeeping Management",
+    icon: CalendarCheck,
+    title: "Housekeeping Management",
     description:
-      "Cleaning tasks trigger on check-out automatically. Track room readiness from your central dashboard.",
+      "Auto-triggered cleaning tasks on check-out with live room readiness tracking.",
+  },
+  {
+    icon: BellRing,
+    title: "Early Check-In Alerts",
+    description:
+      "Guests are notified the moment their room is ready, even before scheduled check-in.",
   },
 ];
 
 export function HeroInfoCard() {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.3, ease: [0.6, 0.05, 0.01, 0.9] }}
-      className="w-full max-w-md"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full max-w-[34rem]"
     >
-      <Card className="overflow-hidden rounded-3xl border border-white/20 bg-white/10 shadow-2xl shadow-black/20 backdrop-blur-xl ring-1 ring-white/10">
-        <div className="relative p-6">
-          {/* Decorative gradient blob */}
-          <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
+      <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl">
+        {/* Top accent line */}
+        <div className="h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent" />
 
+        <div className="p-5">
           {/* Header */}
-          <div className="relative mb-5 border-b border-white/20 pb-3">
-            <h3 className="text-2xl font-semibold tracking-tight text-white">
-              How Can We Help You?
-            </h3>
-          </div>
+          <p className="mb-4 text-sm font-medium uppercase tracking-widest text-white/30">
+            What we do
+          </p>
 
-          {/* Features List */}
-          <div className="relative space-y-4">
+          {/* Features 2x2 grid */}
+          <div className="grid grid-cols-2 gap-3">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + index * 0.1, duration: 0.4 }}
-                className="group flex items-start gap-3"
+                transition={{ delay: 0.6 + index * 0.08, duration: 0.35 }}
+                className="group relative rounded-xl border border-white/[0.04] bg-white/[0.02] p-3.5 transition-colors hover:border-white/[0.1] hover:bg-white/[0.05]"
               >
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 transition-colors group-hover:bg-white/20">
-                  <feature.icon className="h-4 w-4 text-white/90" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="mb-0.5 text-base font-medium text-white">
-                    {feature.title}
-                  </h4>
-                  <p className="text-sm leading-relaxed text-white/60">
-                    {feature.description}
-                  </p>
-                </div>
+                <feature.icon className="mb-2 h-5 w-5 text-blue-400/70" />
+                <h4 className="mb-1 text-base font-medium text-white/90">
+                  {feature.title}
+                </h4>
+                <p className="text-sm leading-relaxed text-white/40">
+                  {feature.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
-      </Card>
+      </div>
     </motion.div>
   );
 }

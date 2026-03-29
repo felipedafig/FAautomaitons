@@ -87,16 +87,15 @@ export function WebGLShader() {
           verticalFade = smoothstep(1.0, 1.0 - fadeSize, uv.y);
         }
         
-        float d = length(p) * distortion;
-        
-        float rx = p.x * (1.0 + d);
-        float gx = p.x;
-        float bx = p.x * (1.0 - d);
+        // Three wave lines at different vertical offsets
+        float wave1 = 0.05 / abs(p.y + sin((p.x + time) * xScale) * yScale);
+        float wave2 = 0.05 / abs(p.y + 0.3 + sin((p.x + time * 1.15) * xScale * 0.9) * yScale);
+        float wave3 = 0.05 / abs(p.y - 0.3 + sin((p.x + time * 0.85) * xScale * 1.1) * yScale);
 
-        // Purple and white color scheme
-        float r = 0.05 / abs(p.y + sin((rx + time) * xScale) * yScale) * 0.8; // Purple
-        float g = 0.05 / abs(p.y + sin((gx + time) * xScale) * yScale) * 0.6; // Purple
-        float b = 0.05 / abs(p.y + sin((bx + time) * xScale) * yScale); // White
+        // Each wave gets a slightly different purple shade
+        float r = wave1 * 0.58 + wave2 * 0.45 + wave3 * 0.70;
+        float g = wave1 * 0.20 + wave2 * 0.12 + wave3 * 0.28;
+        float b = wave1 * 0.92 + wave2 * 0.80 + wave3 * 0.98;
         
         // Apply vertical fade to blend with background at edges
         // Background color matches --background: oklch(0.145 0 0) ≈ #0a0a0a
@@ -199,7 +198,7 @@ export function WebGLShader() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute top-10 left-0 w-full h-full block will-change-transform"
+      className="absolute -top-16 left-0 w-full h-full block will-change-transform"
       style={{ transform: 'translateZ(0)' }}
     />
   )

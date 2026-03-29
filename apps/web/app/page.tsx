@@ -55,7 +55,7 @@ export default function Page() {
       <Header />
       <div className="container mx-auto px-4">
         <div className="grid gap-8 py-12 lg:py-20 items-center lg:grid-cols-2">
-          <Hero />
+          <Hero calendlyUrl={process.env.NEXT_PUBLIC_CALENDLY_URL} />
           <div className="flex justify-center lg:justify-end">
             <HeroInfoCard />
           </div>
