@@ -20,7 +20,11 @@
       "Bash(grep -r \"lucide-react\\\\|react-icons\\\\|simple-icons\" /c/dev/Personal/FAautomaitons/apps/web /c/dev/Personal/FAautomaitons/packages/ui --include=*.tsx --include=*.ts)",
       "Bash(curl:*)",
       "WebFetch(domain:cdn.simpleicons.org)",
-      "Bash(npm pack:*)"
+      "Bash(npm pack:*)",
+      "Bash(git worktree:*)",
+      "Bash(ls -la \"C:/dev/Personal/FAautomaitons/\"*automations*.png)",
+      "Bash(ls -la \"C:/dev/Personal/FAautomaitons/\"*FA*.png)",
+      "Bash(ls C:/dev/Personal/FAautomaitons/*.jpg C:/dev/Personal/FAautomaitons/*.jpeg C:/dev/Personal/FAautomaitons/*.png)"
     ]
   },
   "enabledPlugins": {

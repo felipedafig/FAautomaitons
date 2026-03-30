@@ -134,7 +134,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className="relative will-change-transform" style={{ contentVisibility: 'auto' }}>
+      <div id="how-we-do-it" className="relative will-change-transform" style={{ contentVisibility: 'auto' }}>
         <div className="absolute inset-0 -z-10">
           <WebGLShader />
         </div>
@@ -298,6 +298,7 @@ export default function Page() {
           </ul>
         </div>
       </div>
+      <div id="testimonials">
       <TestimonialsSection
         title="Trusted by developers worldwide"
         description="Join thousands of developers who are already building the future with our AI platform"
@@ -330,6 +331,8 @@ export default function Page() {
           }
         ]}
       />
+      </div>
+      <div id="pricing">
       <PricingSection
         plans={[
           {
@@ -384,7 +387,10 @@ export default function Page() {
         title="Find the Perfect Plan"
         description="Select the ideal package for your needs and start building today."
       />
+      </div>
+      <div id="faqs">
       <FAQSection />
+      </div>
       <Footerdemo />
     </div>
   )

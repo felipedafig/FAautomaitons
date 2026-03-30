@@ -11,9 +11,11 @@ export function Header() {
 	const scrolled = useScroll(20);
 
 	const links = [
-		{ label: 'Features', href: '#' },
-		{ label: 'Pricing', href: '#' },
-		{ label: 'About', href: '#' },
+		{ label: 'How We Do It', href: '/#how-we-do-it' },
+		{ label: 'Testimonials', href: '/#testimonials' },
+		{ label: 'Pricing', href: '/#pricing' },
+		{ label: 'FAQs', href: '/#faqs' },
+		{ label: 'Team', href: '/team' },
 	];
 
 	React.useEffect(() => {
@@ -38,9 +40,14 @@ export function Header() {
 		>
 			<div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 md:px-10 lg:px-16">
 				{/* Logo */}
-				<a href="#" className="group flex items-center gap-2.5">
-					<span className="text-xl font-bold tracking-tight text-foreground transition-opacity group-hover:opacity-80">
-						FA Automations
+				<a href="#" className="group flex items-center gap-1 transition-opacity group-hover:opacity-80">
+					<img
+						src="/fa-logo.png"
+						alt="FA"
+						className="h-10 w-auto"
+					/>
+					<span className="text-xl font-bold tracking-tight text-foreground">
+						Automations
 					</span>
 				</a>
 
@@ -57,17 +64,17 @@ export function Header() {
 					))}
 				</nav>
 
-				{/* Desktop CTAs */}
-				<div className="hidden items-center gap-3 md:flex">
+				{/* Desktop CTA */}
+				<div className="hidden items-center md:flex">
 					<a
-						href="#"
-						className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+						href="/#pricing"
+						className="group relative inline-flex h-11 items-center gap-2 overflow-hidden rounded-xl border border-violet-400/30 bg-gradient-to-b from-violet-500/20 to-violet-600/10 px-7 text-sm font-semibold text-white shadow-[0_0_16px_rgba(139,92,246,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:border-violet-400/50 hover:shadow-[0_0_28px_rgba(139,92,246,0.35),inset_0_1px_0_rgba(255,255,255,0.15)]"
 					>
-						Sign In
-					</a>
-					<Button size="sm" className="rounded-lg px-5 font-semibold">
 						Get Started
-					</Button>
+						<svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+						</svg>
+					</a>
 				</div>
 
 				{/* Mobile hamburger */}
@@ -101,12 +108,15 @@ export function Header() {
 					))}
 				</div>
 				<div className="flex flex-col gap-2">
-					<Button variant="outline" className="w-full" size="lg">
-						Sign In
-					</Button>
-					<Button className="w-full" size="lg">
+					<a
+						href="/#pricing"
+						className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-violet-400/30 bg-gradient-to-b from-violet-500/20 to-violet-600/10 text-base font-semibold text-white shadow-[0_0_16px_rgba(139,92,246,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]"
+					>
 						Get Started
-					</Button>
+						<svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+						</svg>
+					</a>
 				</div>
 			</MobileMenu>
 		</header>

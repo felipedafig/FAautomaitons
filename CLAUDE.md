@@ -54,3 +54,42 @@ The UI package exports are mapped in `packages/ui/package.json` under `"exports"
 - **Styling**: Tailwind v4 `@import` syntax in `packages/ui/src/styles/globals.css`; CSS variables for theming
 - **Animation**: Framer Motion for transitions, Three.js/WebGL for 3D backgrounds, canvas-confetti for celebrations
 - **Adding shadcn components**: `pnpm dlx shadcn@latest add <component> -c apps/web`
+
+## Parallel Worktrees
+
+This repo uses git worktrees to run multiple Claude Code sessions in parallel. Each worktree is a full copy of the repo on its own branch.
+
+| Worktree | Path | Branch | Purpose |
+|----------|------|--------|---------|
+| **Main** | `C:\dev\Personal\FAautomaitons` | `master` | Primary development — merge target |
+| **WT-1** | `C:\dev\Personal\FAautomaitons\.worktrees\wt-1` | `worktree-1` | Parallel task |
+| **WT-2** | `C:\dev\Personal\FAautomaitons\.worktrees\wt-2` | `worktree-2` | Parallel task |
+
+### Rules for worktree sessions
+
+- **Never edit the same file** in two worktrees simultaneously — this causes merge conflicts.
+- Each worktree has its own branch. When work is done, merge into `master` from the main terminal.
+- Worktrees share the same `.git` — commits, stashes, and refs are visible across all.
+- `.env.local` files must be **manually copied** into new worktrees (they are gitignored):
+  ```bash
+  cp apps/web/.env.local .worktrees/wt-1/apps/web/.env.local
+  cp apps/web/.env.local .worktrees/wt-2/apps/web/.env.local
+  ```
+- Run `npm install` inside each worktree after creation (they need their own `node_modules`).
+- The `.worktrees/` folder is gitignored — never commit it.
+
+### Merging worktree work back
+
+```bash
+# From the main terminal (master branch):
+git merge worktree-1
+git merge worktree-2
+```
+
+### Cleanup
+
+```bash
+git worktree remove .worktrees/wt-1
+git worktree remove .worktrees/wt-2
+git branch -d worktree-1 worktree-2
+```
