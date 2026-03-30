@@ -40,7 +40,7 @@ export function Header() {
 		>
 			<div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 md:px-10 lg:px-16">
 				{/* Logo */}
-				<a href="#" className="group flex items-center gap-1 transition-opacity group-hover:opacity-80">
+				<a href="/" className="group flex items-center gap-1 transition-opacity group-hover:opacity-80">
 					<img
 						src="/fa-logo.png"
 						alt="FA"
