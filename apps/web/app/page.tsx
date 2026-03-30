@@ -48,7 +48,7 @@ const appLogos: { name: string; color: string; path: string }[] = [
   {
     name: "Google Drive",
     color: "#4285F4",
-    path: "M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z",
+    path: "M7.71 3.5L1.15 15l2.79 4.86L10.49 8.36H17.2L13.62 2H8.38zM14.34 8.36L7.78 20.5h5.57l6.56-12.14zm2.86 0l-3.58 6.28L17.2 21.5h5.65L19.27 15l3.58-6.64z",
   },
   {
     name: "Microsoft Outlook",
@@ -103,7 +103,7 @@ const appLogos: { name: string; color: string; path: string }[] = [
   {
     name: "Gemini",
     color: "#8E75B2",
-    path: "M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81",
+    path: "M12 0C12 3.18 10.84 6.23 8.78 8.54 6.72 10.84 3.93 12.36 0.88 12.82L0 13l0.88.18C3.93 13.64 6.72 15.16 8.78 17.46 10.84 19.77 12 22.82 12 26V24C12 20.82 13.16 17.77 15.22 15.46 17.28 13.16 20.07 11.64 23.12 11.18L24 11l-0.88-.18C20.07 10.36 17.28 8.84 15.22 6.54 13.16 4.23 12 1.18 12 -2V0z",
   },
   {
     name: "Claude",
@@ -139,28 +139,128 @@ export default function Page() {
           <WebGLShader />
         </div>
         <div className="container mx-auto px-4 py-12 relative z-10">
+          <div className="mb-8">
+            <p className="text-sm font-medium uppercase tracking-widest text-violet-400/70">
+              How we do it
+            </p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-white/90 md:text-4xl">
+              Automation that just works
+            </h2>
+          </div>
           <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-2 lg:gap-4 xl:grid-rows-2">
-            {/* Small box — top left */}
+            {/* Box 1 — Intelligent Triggers */}
             <li className="min-h-[14rem] list-none will-change-transform md:[grid-area:1/1/2/5] xl:[grid-area:1/1/2/5]">
               <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/[0.06] p-2 md:rounded-[1.5rem] md:p-3 bg-white/[0.03] backdrop-blur-xl">
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
-                <div className="relative h-full rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]" />
+                <div className="relative flex h-full flex-col gap-4 rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 py-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>
+                    </div>
+                    <span className="text-xs font-medium uppercase tracking-widest text-violet-400/70">
+                      01
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-semibold tracking-tight text-white/90">
+                    Intelligent Triggers
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/40">
+                    Cloud-hosted automations running 24/7, rigorously tested and monitored so they never miss a beat.
+                  </p>
+                  <div className="mt-auto flex items-center gap-3">
+                    <span className="flex items-center gap-1.5">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                      </span>
+                      <span className="text-xs text-emerald-400/70">
+                        Always on
+                      </span>
+                    </span>
+                    <span className="text-white/10">|</span>
+                    <span className="text-xs text-white/30">
+                      99.9% uptime
+                    </span>
+                  </div>
+                </div>
               </div>
             </li>
 
-            {/* Small box — top center */}
+            {/* Box 2 — Custom Workflows */}
             <li className="min-h-[14rem] list-none will-change-transform md:[grid-area:1/5/2/9] xl:[grid-area:1/5/2/9]">
               <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/[0.06] p-2 md:rounded-[1.5rem] md:p-3 bg-white/[0.03] backdrop-blur-xl">
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
-                <div className="relative h-full rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]" />
+                <div className="relative flex h-full flex-col gap-4 rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 py-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>
+                    </div>
+                    <span className="text-xs font-medium uppercase tracking-widest text-violet-400/70">
+                      02
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-semibold tracking-tight text-white/90">
+                    Built for You
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/40">
+                    We design every workflow around your business. No templates, no guesswork — just automations tailored to how you actually operate.
+                  </p>
+                  <div className="mt-auto flex items-center gap-2 text-xs text-white/30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-violet-400/50"><polyline points="20 6 9 17 4 12" /></svg>
+                    <span>Your tools, your rules</span>
+                  </div>
+                </div>
               </div>
             </li>
 
-            {/* Tall box — right */}
+            {/* Box 3 — Effortless Scaling */}
             <li className="min-h-[14rem] list-none will-change-transform md:[grid-area:1/9/3/13] xl:[grid-area:1/9/3/13]">
               <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/[0.06] p-2 md:rounded-[1.5rem] md:p-3 bg-white/[0.03] backdrop-blur-xl">
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
-                <div className="relative h-full rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]" />
+                <div className="relative flex h-full flex-col gap-5 rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 py-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
+                    </div>
+                    <span className="text-xs font-medium uppercase tracking-widest text-violet-400/70">
+                      03
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-semibold tracking-tight text-white/90">
+                    Real Results
+                  </h3>
+                  <p className="text-sm leading-relaxed text-white/40">
+                    Less busywork, more growth. Here is what changes when repetitive tasks run themselves.
+                  </p>
+                  <div className="mt-auto flex flex-col gap-4">
+                    {[
+                      { label: "Guest check-ins", before: "Manual", after: "Automated", icon: "users" },
+                      { label: "Response time", before: "~30 min", after: "Instant", icon: "clock" },
+                      { label: "Pricing updates", before: "Weekly", after: "Real-time", icon: "dollar" },
+                    ].map((row) => (
+                      <div key={row.label} className="flex items-center gap-3">
+                        <div className="flex flex-col gap-0.5 flex-1 min-w-0">
+                          <span className="text-xs font-medium text-white/60 truncate">
+                            {row.label}
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-white/25 line-through">
+                              {row.before}
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-violet-400/40"><polyline points="9 18 15 12 9 6" /></svg>
+                            <span className="text-xs font-medium text-emerald-400">
+                              {row.after}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    <div className="flex items-center justify-between rounded-lg bg-white/[0.04] px-3 py-2.5">
+                      <span className="text-xs text-white/40">Hours saved per week</span>
+                      <span className="text-sm font-semibold text-violet-400">20+</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </li>
 
@@ -168,14 +268,14 @@ export default function Page() {
             <li className="min-h-[14rem] list-none will-change-transform md:[grid-area:2/1/3/9] xl:[grid-area:2/1/3/9]">
               <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/[0.06] p-2 md:rounded-[1.5rem] md:p-3 bg-white/[0.03] backdrop-blur-xl">
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
-                <div className="relative flex h-full flex-col justify-center gap-5 overflow-hidden rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 py-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
-                  <h3 className="text-lg font-semibold tracking-tight text-white/90 md:text-xl">
+                <div className="relative flex h-full flex-col overflow-hidden rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 pt-5 pb-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+                  <h3 className="mt-6 text-lg font-semibold tracking-tight text-white/90 md:text-xl">
                     Seamless integrations
                     <span className="ml-2 text-white/30">
-                      — 50+ apps connected
+                      | 50+ apps connected
                     </span>
                   </h3>
-                  <div className="relative -mx-6 overflow-hidden">
+                  <div className="relative -mx-6 my-auto overflow-hidden">
                     <div
                       className="flex w-max"
                       style={{ "--duration": "18s", "--gap": "2.5rem" } as React.CSSProperties}

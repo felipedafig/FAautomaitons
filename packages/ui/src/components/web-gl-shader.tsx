@@ -28,12 +28,6 @@ export function WebGLShader() {
   const animate = useCallback(() => {
     const { current: refs } = sceneRef
     
-    // Skip rendering completely when not visible
-    if (!refs.isVisible) {
-      refs.animationId = requestAnimationFrame(animate)
-      return
-    }
-
     // Aggressive throttling: 15fps for performance
     const now = performance.now()
     if (now - refs.lastTime < 66) { // ~15fps
@@ -42,7 +36,14 @@ export function WebGLShader() {
     }
     refs.lastTime = now
 
-    if (refs.uniforms) refs.uniforms.time.value += 0.03 // Increase increment for same visual speed
+    // Always advance time so animation never freezes
+    if (refs.uniforms) refs.uniforms.time.value += 0.03
+
+    // Skip GPU render when not visible, but time still advances
+    if (!refs.isVisible) {
+      refs.animationId = requestAnimationFrame(animate)
+      return
+    }
     if (refs.renderer && refs.scene && refs.camera) {
       refs.renderer.render(refs.scene, refs.camera)
     }
