@@ -468,7 +468,7 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
               }
               format={{
                 style: "currency",
-                currency: "USD",
+                currency: "EUR",
                 minimumFractionDigits: 0,
               }}
               className="font-variant-numeric: tabular-nums"
