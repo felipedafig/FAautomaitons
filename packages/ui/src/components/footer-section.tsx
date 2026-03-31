@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Button } from "@workspace/ui/components/button"
 import {
   Dialog,
@@ -296,6 +297,11 @@ function CookieSettingsContent() {
 }
 
 function Footerdemo() {
+  const [currentUrl, setCurrentUrl] = useState("/")
+  useEffect(() => {
+    setCurrentUrl(window.location.href)
+  }, [])
+
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
@@ -338,7 +344,7 @@ function Footerdemo() {
                   <input
                     type="hidden"
                     name="_next"
-                    value={typeof window !== "undefined" ? window.location.href : "/"}
+                    value={currentUrl}
                   />
                   <div className="space-y-2">
                     <Label htmlFor="contact-name">Name</Label>

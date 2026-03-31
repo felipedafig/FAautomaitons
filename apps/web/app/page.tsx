@@ -312,9 +312,17 @@ export default function Page() {
         testimonials={[
           {
             author: {
+              name: "Ana Figueiredo",
+              location: "Recife, Brazil",
+              avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
+            },
+            text: "Our review scores went up after automating guest follow-ups. The best investment we made for our boutique hotel."
+          },
+          {
+            author: {
               name: "Emma Thompson",
               location: "London, United Kingdom",
-              avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
+              avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face"
             },
             text: "Since switching to FA Automations, our guest response time dropped from hours to seconds. Check-ins run themselves now."
           },
@@ -322,17 +330,9 @@ export default function Page() {
             author: {
               name: "David Park",
               location: "Copenhagen, Denmark",
-              avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+              avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
             },
             text: "Managing 18 apartments used to be a full-time job. Now the workflows handle bookings, cleaners, and reviews automatically."
-          },
-          {
-            author: {
-              name: "Sofia Rodriguez",
-              location: "Barcelona, Spain",
-              avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face"
-            },
-            text: "Our review scores went up after automating guest follow-ups. The best investment we made for our boutique hotel."
           }
         ]}
       />
