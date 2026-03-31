@@ -107,14 +107,24 @@ interface StarData {
   delay: number;
 }
 
+// Seeded PRNG for deterministic stars (avoids hydration mismatch)
+function seededRandom(seed: number) {
+  let s = seed;
+  return () => {
+    s = (s * 16807 + 0) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+}
+
 const generateStars = (): StarData[] => {
+  const rand = seededRandom(42);
   return Array.from({ length: STAR_COUNT }, (_, i) => ({
     id: i,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    size: 1 + Math.random() * 2,
-    duration: 2 + Math.random() * 3,
-    delay: Math.random() * 5,
+    top: `${rand() * 100}%`,
+    left: `${rand() * 100}%`,
+    size: 1 + rand() * 2,
+    duration: 2 + rand() * 3,
+    delay: rand() * 5,
   }));
 };
 
