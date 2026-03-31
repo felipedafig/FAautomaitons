@@ -24,14 +24,8 @@ import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-// --- UTILITY FUNCTIONS ---
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from "@workspace/ui/lib/utils";
+import { useT } from "../i18n/context";
 
 export function useMediaQuery(query: string) {
   const [value, setValue] = useState(false);
@@ -351,6 +345,7 @@ export function PricingSection({
 // Pricing Toggle Component
 function PricingToggle() {
   const { isMonthly, setIsMonthly } = useContext(PricingContext);
+  const t = useT();
   const confettiRef = useRef<HTMLDivElement>(null);
   const monthlyBtnRef = useRef<HTMLButtonElement>(null);
   const annualBtnRef = useRef<HTMLButtonElement>(null);
@@ -413,7 +408,7 @@ function PricingToggle() {
               : "text-muted-foreground hover:text-foreground",
           )}
         >
-          Monthly
+          {t.pricing.monthly}
         </button>
         <button
           ref={annualBtnRef}
@@ -425,15 +420,14 @@ function PricingToggle() {
               : "text-muted-foreground hover:text-foreground",
           )}
         >
-          Annual
+          {t.pricing.annual}
           <span
             className={cn(
               "hidden sm:inline",
               !isMonthly ? "text-primary-foreground/80" : "",
             )}
           >
-            {" "}
-            (Save 20%)
+            {t.pricing.savePct}
           </span>
         </button>
       </div>
@@ -457,6 +451,7 @@ function SignupModal({
 }) {
   const [step, setStep] = useState<"form" | "calendly">("form");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const t = useT();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -500,10 +495,9 @@ function SignupModal({
         {step === "form" ? (
           <>
             <DialogHeader>
-              <DialogTitle>Get Started with {planName}</DialogTitle>
+              <DialogTitle>{t.pricing.signupTitle(planName)}</DialogTitle>
               <DialogDescription>
-                Tell us a bit about yourself and we&apos;ll set everything up
-                for you.
+                {t.pricing.signupDescription}
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -512,32 +506,32 @@ function SignupModal({
               <input type="hidden" name="plan" value={planName} />
               <input type="hidden" name="billing" value={billingCycle} />
               <div className="space-y-2.5">
-                <Label htmlFor={`signup-name-${planName}`}>Name</Label>
+                <Label htmlFor={`signup-name-${planName}`}>{t.pricing.nameLabel}</Label>
                 <Input
                   id={`signup-name-${planName}`}
                   name="name"
-                  placeholder="Your name"
+                  placeholder={t.pricing.namePlaceholder}
                   required
                 />
               </div>
               <div className="space-y-2.5">
-                <Label htmlFor={`signup-email-${planName}`}>Email</Label>
+                <Label htmlFor={`signup-email-${planName}`}>{t.pricing.emailLabel}</Label>
                 <Input
                   id={`signup-email-${planName}`}
                   name="email"
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder={t.pricing.emailPlaceholder}
                   required
                 />
               </div>
               <div className="space-y-2.5">
                 <Label htmlFor={`signup-property-${planName}`}>
-                  Property / Hotel Name
+                  {t.pricing.propertyLabel}
                 </Label>
                 <Input
                   id={`signup-property-${planName}`}
                   name="property"
-                  placeholder="e.g. Seaside Boutique Hotel"
+                  placeholder={t.pricing.propertyPlaceholder}
                   required
                 />
               </div>
@@ -549,11 +543,11 @@ function SignupModal({
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Sending...
+                    {t.pricing.sending}
                   </>
                 ) : (
                   <>
-                    Continue
+                    {t.pricing.continue}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </>
                 )}
@@ -565,11 +559,10 @@ function SignupModal({
             <DialogHeader>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
-                <DialogTitle>You&apos;re signed up!</DialogTitle>
+                <DialogTitle>{t.pricing.signedUpTitle}</DialogTitle>
               </div>
               <DialogDescription>
-                Now let&apos;s schedule a quick call to get your automations
-                running.
+                {t.pricing.signedUpDescription}
               </DialogDescription>
             </DialogHeader>
             {calendlyUrl ? (
@@ -581,8 +574,7 @@ function SignupModal({
               </div>
             ) : (
               <p className="text-sm text-muted-foreground text-center py-8">
-                We&apos;ll be in touch shortly to schedule your onboarding
-                call.
+                {t.pricing.fallbackMessage}
               </p>
             )}
           </>
@@ -595,6 +587,7 @@ function SignupModal({
 // Pricing Card Component
 function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
   const { isMonthly, calendlyUrl } = useContext(PricingContext);
+  const t = useT();
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const isTailored = isNaN(Number(plan.price));
@@ -628,7 +621,7 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
           <div className="bg-primary py-1.5 px-4 rounded-full flex items-center gap-1.5">
             <LucideStar className="text-primary-foreground h-4 w-4 fill-current" />
             <span className="text-primary-foreground text-sm font-semibold">
-              Most Popular
+              {t.pricing.mostPopular}
             </span>
           </div>
         </div>
@@ -672,7 +665,7 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
           )}
         </div>
         <p className="text-xs text-muted-foreground mt-2">
-          {isTailored ? "You choose, we build" : isMonthly ? "Billed Monthly" : "Billed Annually"}
+          {isTailored ? t.pricing.youChooseWeBuild : isMonthly ? t.pricing.billedMonthly : t.pricing.billedAnnually}
         </p>
 
         <ul

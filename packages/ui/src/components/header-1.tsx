@@ -4,19 +4,16 @@ import { Button, buttonVariants } from '@workspace/ui/components/button';
 import { cn } from '@workspace/ui/lib/utils';
 import { MenuToggleIcon } from '@workspace/ui/components/menu-toggle-icon';
 import { useScroll } from '@workspace/ui/components/use-scroll';
+import { LanguageToggle } from '@workspace/ui/components/language-toggle';
+import { useT } from '../i18n/context';
 import { createPortal } from 'react-dom';
 
 export function Header() {
 	const [open, setOpen] = React.useState(false);
 	const scrolled = useScroll(20);
+	const t = useT();
 
-	const links = [
-		{ label: 'How We Do It', href: '/#how-we-do-it' },
-		{ label: 'Testimonials', href: '/#testimonials' },
-		{ label: 'Pricing', href: '/#pricing' },
-		{ label: 'FAQs', href: '/#faqs' },
-		{ label: 'Team', href: '/team' },
-	];
+	const links = t.header.links;
 
 	React.useEffect(() => {
 		if (open) {
@@ -55,7 +52,7 @@ export function Header() {
 				<nav className="hidden items-center gap-8 md:flex">
 					{links.map((link) => (
 						<a
-							key={link.label}
+							key={link.href}
 							href={link.href}
 							className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
 						>
@@ -64,17 +61,15 @@ export function Header() {
 					))}
 				</nav>
 
-				{/* Desktop CTA */}
-				<div className="hidden items-center md:flex">
+				{/* Desktop CTA + Language Toggle */}
+				<div className="hidden items-center gap-3 md:flex">
 					<a
 						href="/#pricing"
 						className="group relative inline-flex h-11 items-center gap-2 overflow-hidden rounded-xl border border-violet-400/30 bg-gradient-to-b from-violet-500/20 to-violet-600/10 px-7 text-sm font-semibold text-white shadow-[0_0_16px_rgba(139,92,246,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:border-violet-400/50 hover:shadow-[0_0_28px_rgba(139,92,246,0.35),inset_0_1px_0_rgba(255,255,255,0.15)]"
 					>
-						Get Started
-						<svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-							<path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-						</svg>
+						{t.header.getStarted}
 					</a>
+					<LanguageToggle />
 				</div>
 
 				{/* Mobile hamburger */}
@@ -85,7 +80,7 @@ export function Header() {
 					className="md:hidden"
 					aria-expanded={open}
 					aria-controls="mobile-menu"
-					aria-label="Toggle menu"
+					aria-label={t.header.toggleMenu}
 				>
 					<MenuToggleIcon open={open} className="size-5" duration={300} />
 				</Button>
@@ -95,7 +90,7 @@ export function Header() {
 				<div className="grid gap-y-1">
 					{links.map((link) => (
 						<a
-							key={link.label}
+							key={link.href}
 							className={buttonVariants({
 								variant: 'ghost',
 								size: 'lg',
@@ -107,15 +102,15 @@ export function Header() {
 						</a>
 					))}
 				</div>
-				<div className="flex flex-col gap-2">
+				<div className="flex flex-col gap-3">
+					<div className="flex justify-center">
+						<LanguageToggle />
+					</div>
 					<a
 						href="/#pricing"
 						className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-violet-400/30 bg-gradient-to-b from-violet-500/20 to-violet-600/10 text-base font-semibold text-white shadow-[0_0_16px_rgba(139,92,246,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]"
 					>
-						Get Started
-						<svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-							<path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-						</svg>
+						{t.header.getStarted}
 					</a>
 				</div>
 			</MobileMenu>

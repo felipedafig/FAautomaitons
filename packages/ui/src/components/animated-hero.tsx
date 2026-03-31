@@ -1,18 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { PhoneCall } from "lucide-react";
 import { PopupModal } from "react-calendly";
 import { Button } from "@workspace/ui/components/button";
+import { useT } from "../i18n/context";
 
 function Hero({ calendlyUrl }: { calendlyUrl?: string }) {
   const [titleNumber, setTitleNumber] = useState(0);
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
-  const titles = useMemo(
-    () => ["Eliminate Manual Tasks", "Run Smoother", "Personalize the Stay", "Be More Efficient", "Save Hours", ],
-    []
-  );
+  const t = useT();
+  const titles = t.hero.titles;
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -31,9 +30,9 @@ function Hero({ calendlyUrl }: { calendlyUrl?: string }) {
         <div className="flex gap-6 py-16 lg:py-24 items-start justify-start flex-col">
           <div className="flex gap-5 flex-col items-start text-left">
             <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-left font-regular leading-[1.15]">
-              <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">Automation Workflows that Help </span>
+              <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">{t.hero.headingPrefix}</span>
               <span className="relative inline-block bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent font-semibold">
-                Hotels
+                {t.hero.headingHighlight}
               </span>
               <span className="relative flex w-full justify-start overflow-hidden text-left h-[1.3em] mt-1">
                 {titles.map((title, index) => (
@@ -61,7 +60,7 @@ function Hero({ calendlyUrl }: { calendlyUrl?: string }) {
             </h1>
 
             <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left">
-              We automate your property’s repetitive operations, from initial booking through to post-stay management.
+              {t.hero.subtitle}
             </p>
           </div>
           <div className="flex flex-row gap-3">
@@ -72,7 +71,7 @@ function Hero({ calendlyUrl }: { calendlyUrl?: string }) {
               onClick={() => calendlyUrl && setIsCalendlyOpen(true)}
             >
               <PhoneCall className="w-4 h-4" />
-              Jump on a call
+              {t.hero.callButton}
             </Button>
             {calendlyUrl && isCalendlyOpen && (
               <PopupModal
@@ -82,7 +81,7 @@ function Hero({ calendlyUrl }: { calendlyUrl?: string }) {
                 rootElement={document.body}
               />
             )}
-            
+
           </div>
         </div>
       </div>

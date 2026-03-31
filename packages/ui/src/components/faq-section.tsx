@@ -9,44 +9,11 @@ import {
 } from "framer-motion";
 import {
   HelpCircle,
-  MessageCircle,
   ChevronDown,
   Sparkles,
 } from "lucide-react";
 import { useState } from "react";
-
-const faqs = [
-  {
-    question: "What exactly does FA Automations do?",
-    answer: "We build custom automation workflows for hotels, vacation rentals, and property managers. This includes automated guest messaging, booking synchronization across platforms like Airbnb and Booking.com, cleaning and maintenance scheduling, review management, and more — all tailored to how your property operates.",
-    category: "Services",
-  },
-  {
-    question: "Which booking platforms do you integrate with?",
-    answer: "We integrate with all major platforms including Airbnb, Booking.com, Vrbo, Expedia, and most property management systems (PMS). Our workflows sync bookings, calendars, and guest data across all your channels so nothing falls through the cracks.",
-    category: "Integrations",
-  },
-  {
-    question: "How long does it take to set up?",
-    answer: "Most properties are fully up and running within 1–2 weeks. We handle the entire setup process — connecting your platforms, configuring your messaging templates, and testing everything before going live. No technical knowledge required on your end.",
-    category: "Getting Started",
-  },
-  {
-    question: "How does the pricing work?",
-    answer: "We offer three plans starting at €29/month based on the number of properties and features you need. Annual billing saves you 20%. All plans include a free trial so you can see the results before committing.",
-    category: "Pricing",
-  },
-  {
-    question: "Will guests know the messages are automated?",
-    answer: "No — our messages are crafted to feel personal and natural. You can fully customize every template with your tone of voice, property details, and local recommendations. Guests will think you're personally replying every time.",
-    category: "Features",
-  },
-  {
-    question: "What if I need something custom for my property?",
-    answer: "That's exactly what we specialize in. Every property is different, so we work with you to design workflows that match your specific operations — whether it's coordinating multiple cleaning teams, managing seasonal pricing, or integrating with tools you already use.",
-    category: "Support",
-  },
-];
+import { useT } from "../i18n/context";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -71,10 +38,9 @@ const itemVariants: Variants = {
   },
 };
 
-function FAQCard({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
+function FAQCard({ faq }: { faq: { question: string; answer: string; category: string } }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div variants={itemVariants}>
@@ -152,6 +118,7 @@ function FAQCard({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
 
 export function FAQSection() {
   const shouldReduceMotion = useReducedMotion();
+  const t = useT();
 
   return (
     <section
@@ -200,7 +167,7 @@ export function FAQSection() {
               variant="secondary"
             >
               <Sparkles className="h-3 w-3" aria-hidden />
-              FAQ
+              {t.faq.badge}
             </Badge>
           </motion.div>
 
@@ -211,9 +178,9 @@ export function FAQSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            Frequently Asked{" "}
+            {t.faq.heading}
             <span className="text-primary">
-              Questions
+              {t.faq.headingHighlight}
             </span>
           </motion.h2>
 
@@ -223,7 +190,7 @@ export function FAQSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            Everything you need to know about our automation services. Can&apos;t find your answer? Reach out — we&apos;re happy to help.
+            {t.faq.subtitle}
           </motion.p>
         </motion.div>
 
@@ -234,8 +201,8 @@ export function FAQSection() {
           animate="visible"
           className="grid gap-4"
         >
-          {faqs.map((faq, index) => (
-            <FAQCard key={index} faq={faq} index={index} />
+          {t.faq.items.map((faq, index) => (
+            <FAQCard key={index} faq={faq} />
           ))}
         </motion.div>
 

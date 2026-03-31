@@ -1,3 +1,5 @@
+"use client"
+
 import { Hero } from "@workspace/ui/components/animated-hero"
 import { HeroInfoCard } from "@workspace/ui/components/hero-info-card"
 import { GlowingEffect } from "@workspace/ui/components/glowing-effect"
@@ -9,6 +11,7 @@ import { FAQSection } from "@workspace/ui/components/faq-section"
 import { Footerdemo } from "@workspace/ui/components/footer-section"
 import { cn } from "@workspace/ui/lib/utils"
 import { LaunchBanner } from "../components/launch-banner"
+import { useAppT } from "@/i18n"
 
 const appLogos: { name: string; color: string; path: string }[] = [
   {
@@ -174,6 +177,8 @@ const AppLogo = ({ color, path }: { color: string; path: string }) => (
 )
 
 export default function Page() {
+  const appT = useAppT()
+  const p = appT.page
   return (
     <div className="relative min-h-svh">
       <Header />
@@ -192,10 +197,10 @@ export default function Page() {
         <div className="container mx-auto px-4 py-12 relative z-10">
           <div className="mb-8">
             <p className="text-sm font-medium uppercase tracking-widest text-violet-400/70">
-              How we do it
+              {p.howWeDoIt}
             </p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-white/90 md:text-4xl">
-              Automation that just works
+              {p.automationTitle}
             </h2>
           </div>
           <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-2 lg:gap-4 xl:grid-rows-2">
@@ -209,18 +214,18 @@ export default function Page() {
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z" /></svg>
                     </div>
                     <span className="text-xs font-medium uppercase tracking-widest text-violet-400/70">
-                      01
+                      {p.box1.number}
                     </span>
                   </div>
                   <h3 className="text-lg font-semibold tracking-tight text-white/90">
-                    Built for You
+                    {p.box1.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-white/40">
-                    No templates, no generic setups, just workflows crafted around the way your business already runs.
+                    {p.box1.description}
                   </p>
                   <div className="mt-auto flex items-center gap-2 text-xs text-white/30">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-violet-400/50"><polyline points="20 6 9 17 4 12" /></svg>
-                    <span>Your tools, your rules</span>
+                    <span>{p.box1.tag}</span>
                   </div>
                 </div>
               </div>
@@ -236,14 +241,14 @@ export default function Page() {
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" /><path d="M12 12v9" /><path d="m8 17 4 4 4-4" /></svg>
                     </div>
                     <span className="text-xs font-medium uppercase tracking-widest text-violet-400/70">
-                      02
+                      {p.box2.number}
                     </span>
                   </div>
                   <h3 className="text-lg font-semibold tracking-tight text-white/90">
-                    Always Running
+                    {p.box2.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-white/40">
-                    Cloud-hosted automations running 24/7, rigorously tested and monitored so they never miss a beat.
+                    {p.box2.description}
                   </p>
                   <div className="mt-auto flex items-center gap-3">
                     <span className="flex items-center gap-1.5">
@@ -252,12 +257,12 @@ export default function Page() {
                         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                       </span>
                       <span className="text-xs text-emerald-400/70">
-                        Always on
+                        {p.box2.alwaysOn}
                       </span>
                     </span>
                     <span className="text-white/10">|</span>
                     <span className="text-xs text-white/30">
-                      99.9% uptime
+                      {p.box2.uptime}
                     </span>
                   </div>
                 </div>
@@ -274,22 +279,17 @@ export default function Page() {
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
                     </div>
                     <span className="text-xs font-medium uppercase tracking-widest text-violet-400/70">
-                      03
+                      {p.box3.number}
                     </span>
                   </div>
                   <h3 className="text-lg font-semibold tracking-tight text-white/90">
-                    Real Results
+                    {p.box3.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-white/40">
-                    Less busywork, more growth. Here is what changes when repetitive tasks run themselves.
+                    {p.box3.description}
                   </p>
                   <div className="mt-auto flex flex-col gap-3">
-                    {[
-                      { label: "Guest check-ins", before: "Manual", after: "Automated" },
-                      { label: "Response time", before: "~30 min", after: "Instant" },
-                      { label: "Staff management", before: "Manual", after: "Automated" },
-                      { label: "Guest satisfaction", before: "Inconsistent", after: "Top-rated" },
-                    ].map((row) => (
+                    {p.box3.rows.map((row) => (
                       <div key={row.label} className="flex items-center justify-between rounded-lg bg-white/[0.03] px-4 py-3 border border-white/[0.04]">
                         <span className="text-sm font-medium text-white/70">
                           {row.label}
@@ -308,12 +308,12 @@ export default function Page() {
                     <div className="mt-2 flex items-center justify-center gap-6 rounded-xl bg-gradient-to-br from-violet-500/10 to-violet-600/5 border border-violet-400/10 px-4 py-4">
                       <div className="flex flex-col items-center">
                         <span className="text-2xl font-bold text-violet-400">18 hrs</span>
-                        <span className="text-xs text-white/50 mt-1">avg. saved per week</span>
+                        <span className="text-xs text-white/50 mt-1">{p.box3.savedPerWeek}</span>
                       </div>
                       <div className="h-8 w-px bg-white/10" />
                       <div className="flex flex-col items-center">
                         <span className="text-2xl font-bold text-emerald-400">31%</span>
-                        <span className="text-xs text-white/50 mt-1">avg. review improvement</span>
+                        <span className="text-xs text-white/50 mt-1">{p.box3.reviewImprovement}</span>
                       </div>
                     </div>
                   </div>
@@ -327,9 +327,9 @@ export default function Page() {
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
                 <div className="relative flex h-full flex-col overflow-hidden rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 pt-5 pb-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
                   <h3 className="mt-6 text-lg font-semibold tracking-tight text-white/90 md:text-xl">
-                    Seamless integrations
+                    {p.box4.title}
                     <span className="ml-2 text-white/30">
-                      | 350+ apps connected
+                      {p.box4.subtitle}
                     </span>
                   </h3>
                   <div className="relative -mx-6 my-auto overflow-hidden">
@@ -357,95 +357,28 @@ export default function Page() {
       </div>
       <div id="testimonials">
       <TestimonialsSection
-        title="Trusted by our first clients"
-        description="Early adopters already seeing real results with their automated workflows"
-        testimonials={[
-          {
-            author: {
-              name: "Ana Figueiredo",
-              location: "Recife, Brazil",
-              avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
-            },
-            text: "Our review scores went up after automating guest follow-ups. The best investment we made for our boutique hotel."
+        title={p.testimonials.title}
+        description={p.testimonials.description}
+        testimonials={p.testimonials.items.map((item, i) => ({
+          author: {
+            name: item.name,
+            location: item.location,
+            avatar: [
+              "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face",
+              "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
+              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+            ][i]!,
           },
-          {
-            author: {
-              name: "Emma Thompson",
-              location: "London, United Kingdom",
-              avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face"
-            },
-            text: "Since switching to FA Automations, our guest response time dropped from hours to seconds. Check-ins run themselves now."
-          },
-          {
-            author: {
-              name: "David Park",
-              location: "Copenhagen, Denmark",
-              avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-            },
-            text: "Managing 18 apartments used to be a full-time job. Now the workflows handle bookings, cleaners, and reviews automatically."
-          }
-        ]}
+          text: item.text,
+        }))}
       />
       </div>
       <LaunchBanner calendlyUrl={process.env.NEXT_PUBLIC_CALENDLY_URL} />
       <div id="pricing">
       <PricingSection
-        plans={[
-          {
-            name: "Starter",
-            price: "20",
-            yearlyPrice: "16",
-            period: "month",
-            features: [
-              "15-day free trial | money-back guarantee",
-              "Automated guest messaging",
-              "24/7 AI virtual receptionist",
-              "Basic booking sync",
-              "Self-service knowledge base",
-            ],
-            description:
-              "Great for small hosts getting started with automation.",
-            buttonText: "Get Started",
-            href: "#",
-          },
-          {
-            name: "Professional",
-            price: "35",
-            yearlyPrice: "28",
-            period: "month",
-            features: [
-              "15-day free trial | money-back guarantee",
-              "Multi-platform booking sync",
-              "Automated reviews & follow-ups",
-              "Cleaning & maintenance task scheduling",
-              "24/7 AI virtual receptionist",
-              "Upselling & cross-selling automations",
-              "Priority support & analytics dashboard",
-            ],
-            description:
-              "Ideal for growing hospitality businesses.",
-            buttonText: "Get Started",
-            href: "#",
-            isPopular: true,
-          },
-          {
-            name: "Custom",
-            price: "Custom",
-            yearlyPrice: "Custom",
-            period: "month",
-            features: [
-              "15-day free trial | money-back guarantee",
-              "Pick only the features you need",
-              "Custom workflow automations",
-            ],
-            description:
-              "Fully personalized to your business — you choose, we build.",
-            buttonText: "Book a Call",
-            href: "#",
-          },
-        ]}
-        title="Find the Perfect Plan"
-        description={`Automation plans built for hotels, vacation rentals, and property managers.\nScale effortlessly as your portfolio grows.`}
+        plans={p.pricing.plans.map((plan) => ({ ...plan, href: "#" }))}
+        title={p.pricing.title}
+        description={p.pricing.description}
         calendlyUrl={process.env.NEXT_PUBLIC_CALENDLY_URL}
       />
       </div>
