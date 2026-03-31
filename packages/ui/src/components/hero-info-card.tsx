@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, BotMessageSquare, CalendarCheck, BellRing } from "lucide-react";
+import { MessageCircle, BotMessageSquare, CalendarCheck, BadgeDollarSign } from "lucide-react";
 
 const features = [
   {
@@ -23,10 +23,10 @@ const features = [
       "Auto-triggered cleaning tasks on check-out with live room readiness tracking.",
   },
   {
-    icon: BellRing,
-    title: "Early Check-In Alerts",
+    icon: BadgeDollarSign,
+    title: "Smart Upselling",
     description:
-      "Guests are notified the moment their room is ready, even before scheduled check-in.",
+      "Automated pre-arrival offers for room upgrades, early check-in, late checkout, and extras.",
   },
 ];
 
@@ -45,7 +45,7 @@ export function HeroInfoCard() {
         <div className="p-5">
           {/* Header */}
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-white/30">
-            What we do
+            Some of what we do
           </p>
 
           {/* Features 2x2 grid */}

@@ -11,8 +11,8 @@ const team = [
     email: "filip.almeida@faautomations.com",
     experience: [
       "Software Engineer Intern — Stibo Systems",
-      "Automation Engineer — Freelance",
-      "Web Developer — Freelance",
+      "Automation Engineer — FA Automations",
+      "Web Developer — FA Automations",
     ],
     linkedin: "https://www.linkedin.com/in/felipe-figueiredo-924244228",
   },

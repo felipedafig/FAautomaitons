@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MoveRight, PhoneCall } from "lucide-react";
+import { PhoneCall } from "lucide-react";
 import { PopupModal } from "react-calendly";
 import { Button } from "@workspace/ui/components/button";
 

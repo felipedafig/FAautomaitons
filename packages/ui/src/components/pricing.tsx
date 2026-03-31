@@ -447,11 +447,13 @@ function SignupModal({
   onOpenChange,
   planName,
   calendlyUrl,
+  billingCycle,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   planName: string;
   calendlyUrl?: string;
+  billingCycle: string;
 }) {
   const [step, setStep] = useState<"form" | "calendly">("form");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -494,7 +496,7 @@ function SignupModal({
       <DialogContent className={cn(
         "transition-all duration-300",
         step === "calendly" ? "sm:max-w-2xl" : "sm:max-w-md",
-      )}>
+      )} style={{ gap: step === "calendly" ? "1rem" : undefined }}>
         {step === "form" ? (
           <>
             <DialogHeader>
@@ -504,11 +506,12 @@ function SignupModal({
                 for you.
               </DialogDescription>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input type="hidden" name="_subject" value={`New signup: ${planName} plan`} />
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <input type="hidden" name="_subject" value={`New signup: ${planName} plan (${billingCycle})`} />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="plan" value={planName} />
-              <div className="space-y-2">
+              <input type="hidden" name="billing" value={billingCycle} />
+              <div className="space-y-2.5">
                 <Label htmlFor={`signup-name-${planName}`}>Name</Label>
                 <Input
                   id={`signup-name-${planName}`}
@@ -517,7 +520,7 @@ function SignupModal({
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <Label htmlFor={`signup-email-${planName}`}>Email</Label>
                 <Input
                   id={`signup-email-${planName}`}
@@ -527,7 +530,7 @@ function SignupModal({
                   required
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 <Label htmlFor={`signup-property-${planName}`}>
                   Property / Hotel Name
                 </Label>
@@ -570,7 +573,7 @@ function SignupModal({
               </DialogDescription>
             </DialogHeader>
             {calendlyUrl ? (
-              <div className="h-[520px] -mx-6 -mb-6">
+              <div className="h-[520px] -mx-6 -mb-6 rounded-b-xl overflow-hidden">
                 <InlineWidget
                   url={calendlyUrl}
                   styles={{ height: "100%", width: "100%" }}
@@ -688,22 +691,26 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
         </ul>
 
         <div className="mt-auto pt-8">
-          {isTailored ? (
-            <>
-              <button
-                onClick={() => setIsSignupOpen(true)}
-                className="w-full h-11 rounded-md px-8 text-sm font-medium relative overflow-hidden bg-gradient-to-r from-blue-500/20 via-violet-500/20 to-purple-500/20 border border-violet-400/40 text-violet-300 hover:border-violet-400/70 hover:from-blue-500/30 hover:via-violet-500/30 hover:to-purple-500/30 transition-all duration-300"
-              >
-                {plan.buttonText}
-              </button>
-              <SignupModal
-                open={isSignupOpen}
-                onOpenChange={setIsSignupOpen}
-                planName={plan.name}
-                calendlyUrl={calendlyUrl}
-              />
-            </>
-          )}
+          <>
+            <button
+              onClick={() => setIsSignupOpen(true)}
+              className={cn(
+                "w-full h-11 rounded-md px-8 text-sm font-medium relative overflow-hidden transition-all duration-300",
+                isTailored
+                  ? "bg-gradient-to-r from-blue-500/20 via-violet-500/20 to-purple-500/20 border border-violet-400/40 text-violet-300 hover:border-violet-400/70 hover:from-blue-500/30 hover:via-violet-500/30 hover:to-purple-500/30"
+                  : "bg-primary text-primary-foreground hover:bg-primary/90",
+              )}
+            >
+              {plan.buttonText}
+            </button>
+            <SignupModal
+              open={isSignupOpen}
+              onOpenChange={setIsSignupOpen}
+              planName={plan.name}
+              calendlyUrl={calendlyUrl}
+              billingCycle={isTailored ? "Custom" : isMonthly ? "Monthly" : "Annual"}
+            />
+          </>
         </div>
       </div>
     </motion.div>

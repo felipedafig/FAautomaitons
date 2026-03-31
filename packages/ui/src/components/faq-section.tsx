@@ -1,7 +1,6 @@
 "use client"
 
 import { Badge } from "@workspace/ui/components/badge";
-import { Button } from "@workspace/ui/components/button";
 import { Card } from "@workspace/ui/components/card";
 import {
   motion,
@@ -240,15 +239,6 @@ export function FAQSection() {
           ))}
         </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="mt-12 text-center"
-        >
-
-        </motion.div>
       </div>
     </section>
   );
