@@ -33,7 +33,11 @@
       "Bash(git stash:*)",
       "Bash(git -C \"C:\\\\dev\\\\Personal\\\\FAautomaitons\" checkout master)",
       "Bash(git -C \"C:\\\\dev\\\\Personal\\\\FAautomaitons\" merge worktree-1)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(find . -name .env* -type f)",
+      "Bash(find /c/dev/Personal/FAautomaitons -name README* -type f)",
+      "Bash(grep -r \"PopupModal\\\\|InlineWidget\" /c/dev/Personal/FAautomaitons/packages/ui/src --include=*.tsx)",
+      "Bash(find /c/dev/Personal/FAautomaitons/apps/web/app -name *.tsx -o -name *.ts)"
     ]
   },
   "enabledPlugins": {
