@@ -17,7 +17,7 @@ export const en: UITranslations = {
   },
   hero: {
     titles: [
-      "Eliminate Manual Tasks",
+      "Cut Manual Work",
       "Run Smoother",
       "Personalize the Stay",
       "Be More Efficient",
