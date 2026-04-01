@@ -99,7 +99,7 @@ Button.displayName = "Button";
 // --- INTERACTIVE STARFIELD ---
 
 // Pre-generate static positions to avoid re-calculation
-const STAR_COUNT = 30; // Reduced from 150 to 30
+const STAR_COUNT = 15;
 
 interface StarData {
   id: number;
@@ -178,7 +178,7 @@ const Star = memo(function Star({
 
   return (
     <motion.div
-      className="absolute bg-foreground rounded-full will-change-transform"
+      className="absolute bg-foreground rounded-full will-change-transform animate-[star-twinkle_var(--star-dur)_ease-in-out_var(--star-delay)_infinite]"
       style={{
         top: data.top,
         left: data.left,
@@ -186,15 +186,9 @@ const Star = memo(function Star({
         height: data.size,
         x: springX,
         y: springY,
-      }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: [0, 0.8, 0] }}
-      transition={{
-        duration: data.duration,
-        repeat: Infinity,
-        delay: data.delay,
-        ease: "easeInOut",
-      }}
+        "--star-dur": `${data.duration}s`,
+        "--star-delay": `${data.delay}s`,
+      } as unknown as React.CSSProperties}
     />
   );
 });
@@ -304,9 +298,12 @@ export function PricingSection({
     y: number | null;
   }>({ x: null, y: null });
 
+  const lastMoveTime = useRef(0);
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    const { clientX, clientY } = event;
-    setMousePosition({ x: clientX, y: clientY });
+    const now = performance.now();
+    if (now - lastMoveTime.current < 50) return; // ~20fps throttle
+    lastMoveTime.current = now;
+    setMousePosition({ x: event.clientX, y: event.clientY });
   };
 
   return (
@@ -323,7 +320,7 @@ export function PricingSection({
         />
         <div className="relative z-10 container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center space-y-4 mb-12">
-            <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl text-neutral-900 dark:text-white">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-neutral-900 dark:text-white">
               {title}
             </h2>
             <p className="text-muted-foreground text-lg whitespace-pre-line">
@@ -331,7 +328,7 @@ export function PricingSection({
             </p>
           </div>
           <PricingToggle />
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 items-start gap-8">
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 lg:grid-cols-3 items-start gap-5 sm:gap-8">
             {plans.map((plan, index) => (
               <PricingCard key={index} plan={plan} index={index} />
             ))}
@@ -566,7 +563,7 @@ function SignupModal({
               </DialogDescription>
             </DialogHeader>
             {calendlyUrl ? (
-              <div className="h-[520px] -mx-6 -mb-6 rounded-b-xl overflow-hidden">
+              <div className="h-[400px] sm:h-[520px] -mx-6 -mb-6 rounded-b-xl overflow-hidden">
                 <InlineWidget
                   url={calendlyUrl}
                   styles={{ height: "100%", width: "100%" }}
@@ -610,10 +607,10 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
       className={cn(
         "rounded-2xl flex flex-col relative bg-background/70 backdrop-blur-sm",
         plan.isPopular
-          ? "border-2 border-primary shadow-xl p-8 lg:p-10"
+          ? "border-2 border-primary shadow-xl p-5 sm:p-8 lg:p-10"
           : isTailored
-            ? "border border-violet-500/30 p-8"
-            : "border border-border p-8",
+            ? "border border-violet-500/30 p-5 sm:p-8"
+            : "border border-border p-5 sm:p-8",
       )}
     >
       {plan.isPopular && (
@@ -639,8 +636,8 @@ function PricingCard({ plan, index }: { plan: PricingPlan; index: number }) {
           <span className={cn(
             "font-bold tracking-tight",
             isTailored
-              ? "text-6xl bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent"
-              : "text-5xl text-foreground",
+              ? "text-4xl sm:text-6xl bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent"
+              : "text-4xl sm:text-5xl text-foreground",
           )}>
             {isTailored ? (
               plan.price

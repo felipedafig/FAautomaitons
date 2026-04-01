@@ -73,7 +73,7 @@ function Footerdemo() {
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative">
             <h2 className="mb-4 text-2xl font-bold tracking-tight">
               {t.footer.stillHaveQuestions}
@@ -166,8 +166,8 @@ function Footerdemo() {
           </div>
           <div>
             <h3 className="mb-4 text-lg font-semibold">{t.footer.contactUs}</h3>
-            <div className="flex gap-6">
-              <div className="flex flex-col items-center gap-2 text-center">
+            <div className="flex flex-col sm:flex-row gap-6">
+              <div className="flex flex-row sm:flex-col items-center gap-3 sm:gap-2 text-left sm:text-center">
                 <img
                   src="/team/member-1.jpg"
                   alt="Filip Almeida"
@@ -193,7 +193,7 @@ function Footerdemo() {
                   </a>
                 </div>
               </div>
-              <div className="flex flex-col items-center gap-2 text-center">
+              <div className="flex flex-row sm:flex-col items-center gap-3 sm:gap-2 text-left sm:text-center">
                 <img
                   src="/team/member-2.jpg"
                   alt="Alexander Dewhurst"

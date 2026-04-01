@@ -183,7 +183,7 @@ export default function Page() {
     <div className="relative min-h-svh">
       <Header />
       <div className="container mx-auto px-4">
-        <div className="grid gap-8 py-12 lg:py-20 items-center lg:grid-cols-2">
+        <div className="grid gap-6 sm:gap-8 py-8 sm:py-12 lg:py-20 items-center lg:grid-cols-2">
           <Hero calendlyUrl={process.env.NEXT_PUBLIC_CALENDLY_URL} />
           <div className="flex justify-center lg:justify-end">
             <HeroInfoCard />
@@ -199,13 +199,13 @@ export default function Page() {
             <p className="text-sm font-medium uppercase tracking-widest text-violet-400/70">
               {p.howWeDoIt}
             </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-white/90 md:text-4xl">
+            <h2 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-white/90 md:text-4xl">
               {p.automationTitle}
             </h2>
           </div>
-          <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-2 lg:gap-4 xl:grid-rows-2">
+          <ul className="grid grid-cols-1 grid-rows-none gap-3 sm:gap-4 md:grid-cols-12 md:grid-rows-2 lg:gap-4 xl:grid-rows-2">
             {/* Box 1 — Built for You */}
-            <li className="min-h-[14rem] list-none will-change-transform md:[grid-area:1/1/2/5] xl:[grid-area:1/1/2/5]">
+            <li className="min-h-[12rem] sm:min-h-[14rem] list-none will-change-transform md:[grid-area:1/1/2/5] xl:[grid-area:1/1/2/5]">
               <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/[0.06] p-2 md:rounded-[1.5rem] md:p-3 bg-white/[0.03] backdrop-blur-xl">
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
                 <div className="relative flex h-full flex-col gap-4 rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 py-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
@@ -232,7 +232,7 @@ export default function Page() {
             </li>
 
             {/* Box 2 — Always Running */}
-            <li className="min-h-[14rem] list-none will-change-transform md:[grid-area:1/5/2/9] xl:[grid-area:1/5/2/9]">
+            <li className="min-h-[12rem] sm:min-h-[14rem] list-none will-change-transform md:[grid-area:1/5/2/9] xl:[grid-area:1/5/2/9]">
               <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/[0.06] p-2 md:rounded-[1.5rem] md:p-3 bg-white/[0.03] backdrop-blur-xl">
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
                 <div className="relative flex h-full flex-col gap-4 rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 py-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
@@ -270,7 +270,7 @@ export default function Page() {
             </li>
 
             {/* Box 3 — Effortless Scaling */}
-            <li className="min-h-[14rem] list-none will-change-transform md:[grid-area:1/9/3/13] xl:[grid-area:1/9/3/13]">
+            <li className="min-h-[12rem] sm:min-h-[14rem] list-none will-change-transform md:[grid-area:1/9/3/13] xl:[grid-area:1/9/3/13]">
               <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/[0.06] p-2 md:rounded-[1.5rem] md:p-3 bg-white/[0.03] backdrop-blur-xl">
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
                 <div className="relative flex h-full flex-col gap-5 rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 py-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
@@ -305,14 +305,14 @@ export default function Page() {
                         </div>
                       </div>
                     ))}
-                    <div className="mt-2 flex items-center justify-center gap-6 rounded-xl bg-gradient-to-br from-violet-500/10 to-violet-600/5 border border-violet-400/10 px-4 py-4">
+                    <div className="mt-2 flex items-center justify-center gap-4 sm:gap-6 rounded-xl bg-gradient-to-br from-violet-500/10 to-violet-600/5 border border-violet-400/10 px-3 sm:px-4 py-3 sm:py-4">
                       <div className="flex flex-col items-center">
-                        <span className="text-2xl font-bold text-violet-400">18 hrs</span>
+                        <span className="text-xl sm:text-2xl font-bold text-violet-400">18 hrs</span>
                         <span className="text-xs text-white/50 mt-1">{p.box3.savedPerWeek}</span>
                       </div>
                       <div className="h-8 w-px bg-white/10" />
                       <div className="flex flex-col items-center">
-                        <span className="text-2xl font-bold text-emerald-400">31%</span>
+                        <span className="text-xl sm:text-2xl font-bold text-emerald-400">31%</span>
                         <span className="text-xs text-white/50 mt-1">{p.box3.reviewImprovement}</span>
                       </div>
                     </div>
@@ -322,7 +322,7 @@ export default function Page() {
             </li>
 
             {/* Wide marquee box — bottom left (inverted L with tall right) */}
-            <li className="min-h-[14rem] list-none will-change-transform md:[grid-area:2/1/3/9] xl:[grid-area:2/1/3/9]">
+            <li className="min-h-[12rem] sm:min-h-[14rem] list-none will-change-transform md:[grid-area:2/1/3/9] xl:[grid-area:2/1/3/9]">
               <div className="relative h-full rounded-[1.25rem] border-[0.75px] border-white/[0.06] p-2 md:rounded-[1.5rem] md:p-3 bg-white/[0.03] backdrop-blur-xl">
                 <GlowingEffect spread={40} glow disabled={false} proximity={64} inactiveZone={0.01} borderWidth={3} />
                 <div className="relative flex h-full flex-col overflow-hidden rounded-xl border-[0.75px] border-white/[0.04] bg-[#0f0a19]/70 px-6 pt-5 pb-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">

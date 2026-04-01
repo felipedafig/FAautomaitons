@@ -12,7 +12,6 @@ export function WebGLShader() {
     mesh: THREE.Mesh | null
     uniforms: any
     animationId: number | null
-    isVisible: boolean
     lastTime: number
   }>({
     scene: null,
@@ -21,33 +20,36 @@ export function WebGLShader() {
     mesh: null,
     uniforms: null,
     animationId: null,
-    isVisible: true,
     lastTime: 0,
   })
 
-  const animate = useCallback(() => {
+  const startLoop = useCallback(() => {
     const { current: refs } = sceneRef
-    
-    // Aggressive throttling: 15fps for performance
-    const now = performance.now()
-    if (now - refs.lastTime < 66) { // ~15fps
-      refs.animationId = requestAnimationFrame(animate)
-      return
-    }
-    refs.lastTime = now
+    if (refs.animationId) return // already running
 
-    // Always advance time so animation never freezes
-    if (refs.uniforms) refs.uniforms.time.value += 0.03
+    const loop = () => {
+      const now = performance.now()
+      if (now - refs.lastTime < 66) { // ~15fps
+        refs.animationId = requestAnimationFrame(loop)
+        return
+      }
+      refs.lastTime = now
 
-    // Skip GPU render when not visible, but time still advances
-    if (!refs.isVisible) {
-      refs.animationId = requestAnimationFrame(animate)
-      return
+      if (refs.uniforms) refs.uniforms.time.value += 0.03
+      if (refs.renderer && refs.scene && refs.camera) {
+        refs.renderer.render(refs.scene, refs.camera)
+      }
+      refs.animationId = requestAnimationFrame(loop)
     }
-    if (refs.renderer && refs.scene && refs.camera) {
-      refs.renderer.render(refs.scene, refs.camera)
+    refs.animationId = requestAnimationFrame(loop)
+  }, [])
+
+  const stopLoop = useCallback(() => {
+    const { current: refs } = sceneRef
+    if (refs.animationId) {
+      cancelAnimationFrame(refs.animationId)
+      refs.animationId = null
     }
-    refs.animationId = requestAnimationFrame(animate)
   }, [])
 
   useEffect(() => {
@@ -161,26 +163,31 @@ export function WebGLShader() {
       refs.uniforms.resolution.value = [width, height]
     }
 
-    // Use IntersectionObserver to pause when not visible with higher threshold
+    // Stop/start the rAF loop based on visibility — zero CPU when off-screen
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          refs.isVisible = entry.isIntersecting && entry.intersectionRatio > 0.1
+          const visible = entry.isIntersecting && entry.intersectionRatio > 0.1
+          if (visible) {
+            startLoop()
+          } else {
+            stopLoop()
+          }
         })
       },
       { threshold: [0, 0.1, 0.5], rootMargin: '-50px' }
     )
 
     initScene()
-    animate()
+    startLoop()
     observer.observe(canvas)
-    
+
     // Use ResizeObserver instead of window resize for better performance
     const resizeObserver = new ResizeObserver(handleResize)
     resizeObserver.observe(canvas)
 
     return () => {
-      if (refs.animationId) cancelAnimationFrame(refs.animationId)
+      stopLoop()
       observer.disconnect()
       resizeObserver.disconnect()
       if (refs.mesh) {
@@ -192,7 +199,7 @@ export function WebGLShader() {
       }
       refs.renderer?.dispose()
     }
-  }, [animate])
+  }, [startLoop, stopLoop])
 
   return (
     <canvas

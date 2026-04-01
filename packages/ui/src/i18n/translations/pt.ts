@@ -17,7 +17,7 @@ export const pt: UITranslations = {
   },
   hero: {
     titles: [
-      "Eliminar Tarefas Manuais",
+      "Automatizar Tarefas",
       "Funcionar Melhor",
       "Personalizar a Estadia",
       "Ser Mais Eficiente",

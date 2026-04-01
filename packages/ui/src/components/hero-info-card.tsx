@@ -14,7 +14,7 @@ export function HeroInfoCard() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full max-w-[34rem]"
+      className="w-full max-w-full sm:max-w-[34rem]"
     >
       <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-2xl">
         {/* Top accent line */}
@@ -27,7 +27,7 @@ export function HeroInfoCard() {
           </p>
 
           {/* Features 2x2 grid */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {t.heroInfoCard.features.map((feature, index) => {
               const Icon = featureIcons[index];
               return (

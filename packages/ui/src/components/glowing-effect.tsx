@@ -140,7 +140,7 @@ const GlowingEffect = memo(
     useEffect(() => {
       if (disabled || !isInViewport) return;
 
-      const handleScroll = () => handleMove();
+      const handleScroll = throttle(() => handleMove(), 60);
 
       window.addEventListener("scroll", handleScroll, { passive: true });
       document.body.addEventListener("pointermove", throttledHandleMove, {

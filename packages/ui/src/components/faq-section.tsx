@@ -4,7 +4,6 @@ import { Badge } from "@workspace/ui/components/badge";
 import { Card } from "@workspace/ui/components/card";
 import {
   motion,
-  useReducedMotion,
   type Variants,
 } from "framer-motion";
 import {
@@ -45,7 +44,7 @@ function FAQCard({ faq }: { faq: { question: string; answer: string; category: s
   return (
     <motion.div variants={itemVariants}>
       <Card
-        className="relative overflow-hidden rounded-2xl border border-border/60 bg-card backdrop-blur-xl transition-all duration-300"
+        className="relative overflow-hidden rounded-2xl border border-border/60 bg-card transition-all duration-300"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -59,9 +58,9 @@ function FAQCard({ faq }: { faq: { question: string; answer: string; category: s
           onClick={() => setIsOpen(!isOpen)}
           className="relative z-10 w-full p-6 text-left"
         >
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3 sm:gap-4">
             <motion.div
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10"
+              className="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10"
               animate={isHovered ? { scale: 1.1 } : { scale: 1 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -104,7 +103,7 @@ function FAQCard({ faq }: { faq: { question: string; answer: string; category: s
             }}
             className="overflow-hidden"
           >
-            <div className="pt-4 pl-14">
+            <div className="pt-4 pl-0 sm:pl-14">
               <p className="text-sm leading-relaxed text-muted-foreground">
                 {faq.answer}
               </p>
@@ -117,7 +116,6 @@ function FAQCard({ faq }: { faq: { question: string; answer: string; category: s
 }
 
 export function FAQSection() {
-  const shouldReduceMotion = useReducedMotion();
   const t = useT();
 
   return (
@@ -125,31 +123,13 @@ export function FAQSection() {
       aria-labelledby="faq-section-heading"
       className="relative w-full overflow-hidden px-4 py-20 sm:px-6 lg:px-10"
     >
-      {/* Background decorative elements */}
+      {/* Background decorative elements — pure CSS animations for zero JS cost */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: shouldReduceMotion ? 1 : [1, 1.1, 1],
-            opacity: [0.08, 0.15, 0.08],
-          }}
-          transition={{
-            duration: shouldReduceMotion ? 0.6 : 12,
-            repeat: shouldReduceMotion ? 0 : Infinity,
-            ease: "linear",
-          }}
-          className="absolute right-0 top-0 h-72 w-72 rounded-full bg-primary/20 blur-[120px]"
+        <div
+          className="absolute right-0 top-0 h-72 w-72 rounded-full bg-primary/20 blur-[120px] animate-[faq-blob-a_12s_linear_infinite] motion-reduce:animate-none"
         />
-        <motion.div
-          animate={{
-            scale: shouldReduceMotion ? 1 : [1.1, 1, 1.1],
-            opacity: [0.08, 0.15, 0.08],
-          }}
-          transition={{
-            duration: shouldReduceMotion ? 0.6 : 10,
-            repeat: shouldReduceMotion ? 0 : Infinity,
-            ease: "linear",
-          }}
-          className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-emerald-400/15 blur-[120px]"
+        <div
+          className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-emerald-400/15 blur-[120px] animate-[faq-blob-b_10s_linear_infinite] motion-reduce:animate-none"
         />
       </div>
 
@@ -173,7 +153,7 @@ export function FAQSection() {
 
           <motion.h2
             id="faq-section-heading"
-            className="mb-4 text-4xl font-semibold tracking-tight text-foreground md:text-5xl"
+            className="mb-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}

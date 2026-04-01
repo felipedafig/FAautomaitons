@@ -4,7 +4,7 @@ export const pt = {
     automationTitle: "Automa\u00e7\u00e3o que simplesmente funciona",
     box1: {
       number: "01",
-      title: "Feito para Si",
+      title: "Feito para o Seu Negócio",
       description:
         "Sem modelos gen\u00e9ricos, apenas workflows criados \u00e0 medida do funcionamento do seu neg\u00f3cio.",
       tag: "As suas ferramentas, as suas regras",

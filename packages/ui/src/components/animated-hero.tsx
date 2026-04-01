@@ -27,9 +27,9 @@ function Hero({ calendlyUrl }: { calendlyUrl?: string }) {
   return (
     <div className="w-full">
       <div className="container mx-auto mt-10 px-4">
-        <div className="flex gap-6 py-16 lg:py-24 items-start justify-start flex-col">
-          <div className="flex gap-5 flex-col items-start text-left">
-            <h1 className="text-4xl md:text-6xl max-w-2xl tracking-tighter text-left font-regular leading-[1.15]">
+        <div className="flex gap-4 sm:gap-6 py-10 sm:py-16 lg:py-24 items-start justify-start flex-col">
+          <div className="flex gap-4 sm:gap-5 flex-col items-start text-left">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl max-w-2xl tracking-tighter text-left font-regular leading-[1.15]">
               <span className="bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">{t.hero.headingPrefix}</span>
               <span className="relative inline-block bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent font-semibold">
                 {t.hero.headingHighlight}
@@ -59,7 +59,7 @@ function Hero({ calendlyUrl }: { calendlyUrl?: string }) {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left">
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-xl text-left">
               {t.hero.subtitle}
             </p>
           </div>

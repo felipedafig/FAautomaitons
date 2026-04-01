@@ -4,19 +4,16 @@ import React from 'react';
 export function useScroll(threshold: number) {
 	const [scrolled, setScrolled] = React.useState(false);
 
-	const onScroll = React.useCallback(() => {
-		setScrolled(window.scrollY > threshold);
-	}, [threshold]);
-
 	React.useEffect(() => {
-		window.addEventListener('scroll', onScroll);
+		const onScroll = () => {
+			const past = window.scrollY > threshold;
+			setScrolled((prev) => (prev === past ? prev : past));
+		};
+
+		onScroll(); // check on mount
+		window.addEventListener('scroll', onScroll, { passive: true });
 		return () => window.removeEventListener('scroll', onScroll);
-	}, [onScroll]);
-
-	// also check on first load
-	React.useEffect(() => {
-		onScroll();
-	}, [onScroll]);
+	}, [threshold]);
 
 	return scrolled;
 }
