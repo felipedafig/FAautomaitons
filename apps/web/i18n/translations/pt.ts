@@ -42,7 +42,7 @@ export const pt = {
     testimonials: {
       title: "A confian\u00e7a dos nossos primeiros clientes",
       description:
-        "Primeiros utilizadores j\u00e1 a ver resultados reais com os seus workflows automatizados",
+        "Os primeiros clientes já estão a ver resultados reais com as suas soluções alimentadas por IA.",
       items: [
         {
           name: "Ana Figueiredo",
@@ -64,18 +64,18 @@ export const pt = {
     pricing: {
       title: "Encontre o Plano Perfeito",
       description:
-        "Planos de automa\u00e7\u00e3o criados para hot\u00e9is, alojamentos locais e gestores de propriedades.\nEscale sem esfor\u00e7o \u00e0 medida que o seu portf\u00f3lio cresce.",
+        "Escolha entre planos Starter ou Professional, ou crie uma solução Custom personalizada para si.\nAutomação flexível para todas as necessidades de gestão.",
       plans: [
         {
           name: "Starter",
-          price: "20",
-          yearlyPrice: "16",
+          price: "30",
+          yearlyPrice: "24",
           period: "m\u00eas",
           features: [
-            "15 dias de teste gr\u00e1tis | garantia de devolu\u00e7\u00e3o",
-            "Mensagens autom\u00e1ticas para h\u00f3spedes",
-            "Rececionista virtual IA 24/7",
-            "Sincroniza\u00e7\u00e3o b\u00e1sica de reservas",
+            "15 dias de teste grátis | garantia de devolução",
+            "Mensagens automáticas para hóspedes",
+            "Automação de limpeza e manutenção",
+            "Sincronização básica de reservas",
             "Base de conhecimento self-service",
           ],
           description:
@@ -84,15 +84,15 @@ export const pt = {
         },
         {
           name: "Professional",
-          price: "35",
-          yearlyPrice: "28",
+          price: "45",
+          yearlyPrice: "36",
           period: "m\u00eas",
           features: [
             "15 dias de teste gr\u00e1tis | garantia de devolu\u00e7\u00e3o",
             "Sincroniza\u00e7\u00e3o multi-plataforma de reservas",
             "Avalia\u00e7\u00f5es e follow-ups autom\u00e1ticos",
-            "Agendamento de limpeza e manuten\u00e7\u00e3o",
-            "Rececionista virtual IA 24/7",
+            "Automação de limpeza e manutenção",
+            "Rececionista virtual IA 24/7 pack",
             "Automa\u00e7\u00f5es de upselling e cross-selling",
             "Suporte priorit\u00e1rio e painel de an\u00e1lises",
           ],
@@ -118,11 +118,12 @@ export const pt = {
     },
   },
   launchBanner: {
-    badge: "Limitado \u2014 6 vagas restantes",
+    badge: "Limitado — ",
+    badgeHighlight: "6 vagas restantes",
     heading: "Estamos a criar workflows para",
-    headingHighlight: "10 hot\u00e9is",
+    headingHighlight: "10 negócios",
     headingSuffix: "| completamente gr\u00e1tis",
-    body: "Estamos a come\u00e7ar e queremos conquistar a nossa reputa\u00e7\u00e3o da forma certa \u2014 entregando resultados reais primeiro. Se for um dos primeiros 10 hot\u00e9is a juntar-se, criamos e gerimos os seus workflows de automa\u00e7\u00e3o durante",
+    body: "Estamos a começar e queremos conquistar a nossa reputação da forma certa — entregando resultados reais primeiro. Se for um dos primeiros 10 negócios a juntar-se, criamos e gerimos os seus workflows de automação durante",
     bodyHighlight: "o primeiro m\u00eas inteiro sem qualquer custo",
     bodyEnd: ". Sem compromisso.",
     cta: "Reserve o Seu Lugar",

@@ -22,11 +22,12 @@ export const en: UITranslations = {
       "Personalize the Stay",
       "Be More Efficient",
       "Save Hours",
+      "Stay Ahead with AI",
     ],
     headingPrefix: "Automation Workflows that Help ",
-    headingHighlight: "Hotels",
+    headingHighlight: "Properties",
     subtitle:
-      "We automate your property\u2019s repetitive operations, from initial booking through to post-stay management.",
+      "Your AI partner for modern property management. From solo managers to hotels, we handle repetitive tasks so you can focus on guest experience. We leverage AI and data to facilitate a tailored guest journey while reclaiming your time and cutting operational overhead.",
     callButton: "Jump on a call",
   },
   heroInfoCard: {
@@ -40,7 +41,7 @@ export const en: UITranslations = {
       {
         title: "AI Virtual Receptionist",
         description:
-          "24/7 AI agent handling inquiries, local tips, and real-time issue resolution.",
+          "24/7 AI agent handling inquiries, local tips, real-time issue resolution, and personalized smart upselling.",
       },
       {
         title: "Housekeeping Management",
@@ -48,9 +49,9 @@ export const en: UITranslations = {
           "Auto-triggered cleaning tasks on check-out with live room readiness tracking.",
       },
       {
-        title: "Smart Upselling",
+        title: "Data-Driven Insights",
         description:
-          "Automated pre-arrival offers for room upgrades, early check-in, late checkout, and extras.",
+          "Analyze reviews and guest feedback to rank cleaners, identify improvement areas, and enhance customer satisfaction.",
       },
     ],
   },

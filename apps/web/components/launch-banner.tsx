@@ -9,10 +9,10 @@ export function LaunchBanner({ calendlyUrl }: { calendlyUrl?: string }) {
   const t = useAppT().launchBanner
 
   return (
-    <div className="relative overflow-hidden mx-auto max-w-4xl my-16 px-4">
+    <div className="relative overflow-hidden mx-auto max-w-[60rem] my-16 px-4">
       <div className="relative rounded-2xl border border-red-500/30 bg-red-950/20 backdrop-blur-sm p-5 sm:p-8 md:p-10">
         {/* Subtle glow */}
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-40 bg-red-500/10 blur-3xl rounded-full pointer-events-none" />
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-40 bg-purple-500/10 blur-3xl rounded-full pointer-events-none" />
 
         <div className="relative flex flex-col items-center text-center gap-5">
           {/* Badge */}
@@ -24,19 +24,20 @@ export function LaunchBanner({ calendlyUrl }: { calendlyUrl?: string }) {
             <span className="text-xs font-semibold uppercase tracking-wider text-red-400">
               {t.badge}
             </span>
+            <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent font-semibold">{t.badgeHighlight}</span>
           </div>
 
           {/* Heading */}
           <h3 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white/90">
             {t.heading}{" "}
-            <span className="text-red-400">{t.headingHighlight}</span>
+            <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent font-semibold">{t.headingHighlight}</span>
             {" "}{t.headingSuffix}
           </h3>
 
           {/* Body */}
           <p className="max-w-2xl text-sm md:text-base leading-relaxed text-white/50">
             {t.body}{" "}
-            <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500 bg-clip-text text-transparent font-semibold">{t.bodyHighlight}</span>
+            <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent font-semibold">{t.bodyHighlight}</span>
             {t.bodyEnd}
           </p>
 

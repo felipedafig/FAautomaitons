@@ -22,11 +22,12 @@ export const pt: UITranslations = {
       "Personalizar a Estadia",
       "Ser Mais Eficiente",
       "Poupar Horas",
+      "Manter-se à Frente com IA",
     ],
     headingPrefix: "Workflows de Automa\u00e7\u00e3o que Ajudam ",
-    headingHighlight: "Hot\u00e9is",
+    headingHighlight: "Propriedades",
     subtitle:
-      "Automatizamos as opera\u00e7\u00f5es repetitivas da sua propriedade, desde a reserva inicial at\u00e9 \u00e0 gest\u00e3o p\u00f3s-estadia.",
+      "O seu parceiro de IA para gestão moderna de propriedades. De gestores individuais a hotéis, tratamos das tarefas repetitivas para que possa focar na experiência do hóspede. Usamos IA e dados para facilitar uma jornada personalizada enquanto recuperamos o seu tempo e reduzimos os custos operacionais.",
     callButton: "Agendar chamada",
   },
   heroInfoCard: {
@@ -40,7 +41,7 @@ export const pt: UITranslations = {
       {
         title: "Rececionista Virtual IA",
         description:
-          "Agente IA 24/7 respondendo a d\u00favidas, dicas locais e resolu\u00e7\u00e3o de problemas em tempo real.",
+          "Agente IA 24/7 respondendo a dúvidas, dicas locais, resolução de problemas em tempo real e upselling inteligente personalizado.",
       },
       {
         title: "Gest\u00e3o de Limpeza",
@@ -48,9 +49,9 @@ export const pt: UITranslations = {
           "Tarefas de limpeza acionadas automaticamente no check-out com acompanhamento do estado dos quartos.",
       },
       {
-        title: "Upselling Inteligente",
+        title: "Insights Baseados em Dados",
         description:
-          "Ofertas autom\u00e1ticas pr\u00e9-chegada para upgrades de quarto, check-in antecipado, checkout tardio e extras.",
+          "Análise de avaliações e feedback para classificar limpeza, identificar áreas de melhoria e aumentar a satisfação.",
       },
     ],
   },

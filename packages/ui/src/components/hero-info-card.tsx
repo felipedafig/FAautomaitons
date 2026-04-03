@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, BotMessageSquare, CalendarCheck, BadgeDollarSign } from "lucide-react";
+import { MessageCircle, BotMessageSquare, CalendarCheck, TrendingUp } from "lucide-react";
 import { useT } from "../i18n/context";
 
-const featureIcons = [MessageCircle, BotMessageSquare, CalendarCheck, BadgeDollarSign];
+const featureIcons = [MessageCircle, BotMessageSquare, CalendarCheck, TrendingUp];
 
 export function HeroInfoCard() {
   const t = useT();

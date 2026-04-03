@@ -42,7 +42,7 @@ export const en = {
     testimonials: {
       title: "Trusted by our first clients",
       description:
-        "Early adopters already seeing real results with their automated workflows",
+        "Early adopters already seeing real results with their AI-powered solutions.",
       items: [
         {
           name: "Ana Figueiredo",
@@ -64,17 +64,17 @@ export const en = {
     pricing: {
       title: "Find the Perfect Plan",
       description:
-        "Automation plans built for hotels, vacation rentals, and property managers.\nScale effortlessly as your portfolio grows.",
+        "Choose from Starter or Professional plans, or build a Custom solution tailored to your needs.\nFlexible automation for every property management requirement.",
       plans: [
         {
           name: "Starter",
-          price: "20",
-          yearlyPrice: "16",
+          price: "30",
+          yearlyPrice: "24",
           period: "month",
           features: [
             "15-day free trial | money-back guarantee",
             "Automated guest messaging",
-            "24/7 AI virtual receptionist",
+            "Cleaning & maintenance task automation",
             "Basic booking sync",
             "Self-service knowledge base",
           ],
@@ -84,15 +84,15 @@ export const en = {
         },
         {
           name: "Professional",
-          price: "35",
-          yearlyPrice: "28",
+          price: "45",
+          yearlyPrice: "36",
           period: "month",
           features: [
             "15-day free trial | money-back guarantee",
             "Multi-platform booking sync",
             "Automated reviews & follow-ups",
-            "Cleaning & maintenance task scheduling",
-            "24/7 AI virtual receptionist",
+            "Cleaning & maintenance task automation",
+            "24/7 AI virtual receptionist pack",
             "Upselling & cross-selling automations",
             "Priority support & analytics dashboard",
           ],
@@ -118,11 +118,12 @@ export const en = {
     },
   },
   launchBanner: {
-    badge: "Limited \u2014 6 spots left",
-    heading: "We\u2019re building workflows for",
-    headingHighlight: "10 hotels",
+    badge: "Limited — ",
+    badgeHighlight: "6 spots left",
+    heading: "We're building workflows for",
+    headingHighlight: "10 businesses",
     headingSuffix: "| completely free",
-    body: "We\u2019re just getting started and want to earn our reputation the right way \u2014 by delivering real results first. If you\u2019re one of the first 10 hotels to join, we\u2019ll build and run your automation workflows for",
+    body: "We're just getting started and want to earn our reputation right way — by delivering real results first. If you're one of the first 10 properties to join, we'll build and run your automation workflows for",
     bodyHighlight: "the entire first month at no cost",
     bodyEnd: ". No strings attached.",
     cta: "Reserve Your Spot",
